@@ -1,0 +1,40 @@
+version: '3.9'
+
+networks:
+  ds-jueri:
+    name: ds-jueri
+    driver: bridge
+
+services:
+
+  ds-nginx:
+    build:
+      context: ./.docker/
+      dockerfile: Dockerfile
+    container_name: ds-nginx
+    hostname: ho-nginx
+    volumes:
+      - ./:/var/www/html
+    ports:
+      - 80:80
+    networks:
+      - ds-jueri
+
+  # pro-mysql:
+  #   image: mysql:8.0
+  #   container_name: project-mysql
+  #   hostname: ho-mysql
+  #   environment:
+  #     # - MYSQL_ROOT_PASSWORD=secret
+  #     # - MYSQL_DATABASE=documentation
+  #     # - MYSQL_PASSWORD=secret-mysql
+  #     MYSQL_ROOT_PASSWORD: secret
+  #     MYSQL_DATABASE: documentation
+  #     MYSQL_USER: pro-doc
+  #     MYSQL_PASSWORD: pro-secret
+  #   ports:
+  #     - 3307:3306
+  #   volumes:
+  #     - ./.docker/volume/mysql:/var/lib/mysql
+  #   networks:
+  #     - ds-jueri
