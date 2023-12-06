@@ -40,7 +40,7 @@
 
   <div class="row row-cols-1 row-cols-sm-2 row-cols-md-10 justify-content-center">
 
-    <div class="card s-card col m-2" style="width: 18rem; height: 20rem;">
+    <div class="card s-card col m-4" style="width: 18rem; height: 20rem;">
       
       <div class="card-body d-flex flex-column justify-content-between align-items-center">
 
@@ -64,7 +64,7 @@
 
     </div>
 
-    <div class="card s-card col m-2" style="width: 18rem; height: 20rem;">
+    <div class="card s-card col m-4" style="width: 18rem; height: 20rem;">
       
       <div class="card-body d-flex flex-column justify-content-between align-items-center">
 
@@ -88,7 +88,7 @@
 
     </div>
 
-    <div class="card s-card col m-2" style="width: 18rem; height: 20rem;">
+    <div class="card s-card col m-4" style="width: 18rem; height: 20rem;">
       
       <div class="card-body d-flex flex-column justify-content-between align-items-center">
 
@@ -112,7 +112,7 @@
 
     </div>
 
-    <div class="card s-card col m-2" style="width: 18rem; height: 20rem;">
+    <div class="card s-card col m-4" style="width: 18rem; height: 20rem;">
       
       <div class="card-body d-flex flex-column justify-content-between align-items-center">
 
@@ -136,7 +136,7 @@
 
     </div>
 
-    <div class="card s-card col m-2" style="width: 18rem; height: 20rem;">
+    <div class="card s-card col m-4" style="width: 18rem; height: 20rem;">
       
       <div class="card-body d-flex flex-column justify-content-between align-items-center">
 
@@ -160,7 +160,7 @@
 
     </div>
 
-    <div class="card s-card col m-2" style="width: 18rem; height: 20rem;">
+    <div class="card s-card col m-4" style="width: 18rem; height: 20rem;">
       
       <div class="card-body d-flex flex-column justify-content-between align-items-center">
 
@@ -184,7 +184,7 @@
 
     </div>
 
-    <div class="card s-card col m-2" style="width: 18rem; height: 20rem;">
+    <div class="card s-card col m-4" style="width: 18rem; height: 20rem;">
       
       <div class="card-body d-flex flex-column justify-content-between align-items-center">
 
@@ -208,7 +208,7 @@
 
     </div>
 
-    <div class="card s-card col m-2" style="width: 18rem; height: 20rem">
+    <div class="card s-card col m-4" style="width: 18rem; height: 20rem">
       
       <div class="card-body d-flex flex-column justify-content-between align-items-center">
 
@@ -232,7 +232,7 @@
 
     </div>
 
-    <div class="card s-card col m-2" style="width: 18rem; height: 20rem">
+    <div class="card s-card col m-4" style="width: 18rem; height: 20rem">
       
       <div class="card-body d-flex flex-column justify-content-between align-items-center">
 
@@ -256,7 +256,7 @@
 
     </div>
 
-    <div class="card s-card col m-2" style="width: 18rem; height: 20rem">
+    <div class="card s-card col m-4" style="width: 18rem; height: 20rem">
       
       <div class="card-body d-flex flex-column justify-content-between align-items-center">
 
@@ -280,7 +280,7 @@
 
     </div>
 
-    <div class="card s-card col m-2" style="width: 18rem; height: 20rem">
+    <div class="card s-card col m-4" style="width: 18rem; height: 20rem">
       
       <div class="card-body d-flex flex-column justify-content-between align-items-center">
 
@@ -304,7 +304,7 @@
 
     </div>
 
-    <div class="card s-card col m-2" style="width: 18rem; height: 20rem;">
+    <div class="card s-card col m-4" style="width: 18rem; height: 20rem;">
       
       <div class="card-body d-flex flex-column justify-content-between align-items-center">
 

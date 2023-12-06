@@ -56,6 +56,24 @@ body
   }
 }
 
-.hover:hover {
+.hover:hover 
+{
   color: #00000071 !important;
+}
+
+.loagind
+{
+  background-color: #00000071;
+  min-height: 100vh;
+  min-width: 100vw;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loagind .fa-ellipsis 
+{
+  font-size: 10rem;
+  color: red;
 }

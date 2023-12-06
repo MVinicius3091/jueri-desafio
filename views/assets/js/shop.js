@@ -47,7 +47,8 @@ $(function ()
   $('.btn-search').click(function () 
   {
     let currentValue = $('.search-product').val();
-    products = [];
+
+    loading();
 
     searchProduct(api.data, products, currentValue);
     renderSearch(products);
@@ -64,15 +65,20 @@ $(function ()
  
     if (e.key == 'Enter') 
     {
+      loading();
+      
       searchProduct(api.data, products, currentValue);
       renderSearch(products);
+
+      console.log(products);
 
       e.target.value = '';
     }
 
   });
-
+  
 });
+
 
 function searchProduct(api, products, currentValue)
 {
@@ -148,10 +154,9 @@ function renderSearch(products)
       quantidade, 
       tipo_preco} = product;
 
+    contents += `<div class="card col m-2 shadow align-items-center" style="width: 20rem;">
 
-    contents += `<div class="card col m-2 shadow" style="width: 18rem;">
-
-                  <img src="${imagem ?? '../views/assets/images/empty-photo-1.png'}" class="card-img-top" alt="Imagem do produto" >
+                  <img src="${imagem ?? '../views/assets/images/empty-photo-1.png'}" class="card-img-top mt-2" alt="Imagem do produto" style="width: 10rem;">
 
                   <div class="card-body d-flex flex-column justify-content-between">
                     <input type="hidden" name="id" value="${id}">
@@ -159,15 +164,15 @@ function renderSearch(products)
                       ${descricao}
                     </h5>
 
-                    <p class="card-text">
+                    <p class="card-text text-start">
                       cód: ${codigo_barras}
                     </p>
 
-                    <p class="card-text">
+                    <p class="card-text text-start">
                       disponível: ${quantidade}
                     </p>
 
-                    <p class="card-text">
+                    <p class="card-text text-start">
                       Preço: ${numberFormat(tipo_preco??0)}
                     </p>
 
@@ -182,14 +187,4 @@ function renderSearch(products)
     $('.shop-products').html(contents);
 
   });
-}
-
-function numberFormat(number) {
-
-  return Intl.NumberFormat('pt-br', {
-    style: 'currency',
-    currency: 'BRL',
-    minimumFractionDigits: 2
-
-  }).format(number);
 }

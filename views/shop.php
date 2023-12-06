@@ -10,13 +10,13 @@
 
 </div>
 
-<div class="row row-cols-2 row-cols-sm-2 row-cols-md-10 justify-content-center shop-products">
+<div class="d-grid text-center shop-products" style="grid-template-columns: repeat(3,1fr);">
 
   <?php foreach($API_REQUEST as $k => $v): ?>
     
-    <div class="card col m-2 shadow" style="width: 18rem;">
+    <div class="card m-2 shadow align-items-center" style="width: 20rem;">
 
-      <img src="<?= $v['imagem'] ??'../views/assets/images/empty-photo-1.png' ?>" class="card-img-top" alt="Imagem do produto" >
+      <img src="<?= $v['imagem'] ??'../views/assets/images/empty-photo-1.png' ?>" class="card-img-top mt-2" alt="Imagem do produto" style="width: 10rem;">
 
       <div class="card-body d-flex flex-column justify-content-between">
         <input type="hidden" name="id" value="<?= $v['id'] ?>">
@@ -24,15 +24,15 @@
           <?= $v['descricao'] ?>
         </h5>
 
-        <p class="card-text">
+        <p class="card-text text-start">
           cód: <?= $v['codigo_barras'] ?>
         </p>
 
-        <p class="card-text">
+        <p class="card-text text-start">
           disponível: <?= $v['quantidade'] ?>
         </p>
 
-        <p class="card-text">
+        <p class="card-text text-start">
           Preço: R$ <?= number_format($v['tipo_preco'] , 2, ',', '.') ?>
         </p>
 
@@ -46,7 +46,9 @@
 
   <?php endforeach; ?>
 
-  <nav class="mt-2 w-100">
+</div>
+
+<nav class="mt-2 w-100">
 
     <ul class="pagination justify-content-center">
 
@@ -81,7 +83,5 @@
     </ul>
 
   </nav>
-
-</div>
 
 <?php push('script-shop', '<script src="./views/assets/js/shop.js"></script>') ?>
