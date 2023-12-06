@@ -1,6 +1,8 @@
 <?php
 
-function sessioCreate(string $key, string $session)
+session_start();
+
+function sessionCreate(string $key, string $session)
 {
   $_SESSION[$key] = $session;
 }
@@ -13,7 +15,7 @@ function getSession(string $key)
     $session = $_SESSION[$key]; 
     unset($_SESSION[$key]);
 
-    return $session;
+    echo $session;
   }
 
 }
@@ -36,24 +38,74 @@ function stack($key)
   }
 }
 
-function session(string $session)
+function session(string $session=null)
 {
-  return (isset($_SESSION[$session])) ?? false;
+  return (isset($_SESSION[$session])) ? $_SESSION[$session] : $_SESSION;
 }
 
 function csrf() 
 {
   $randon = uniqid().time();
-  sessioCreate('token', $randon);
+  sessionCreate('token', $randon);
 
   echo "<input type='hidden' name='token' id='token' value='$randon'/>";
 }
 
-function getApiJs($request) 
+function env($env) 
+{
+  $fileExist = file_get_contents('.env', true);
+  $keyAccess = explode("\n", $fileExist);
+
+  $access = [];
+
+  foreach ($keyAccess as $v) 
+  {
+    list($key, $val) = explode('=', $v);
+
+    $access[$key] = $val;
+  }
+
+  return $access[$env];
+}
+
+function sweetalert() 
 {
 
-  $url = "https://jueri.com.br/sis/".$request;
-  $token_access = "j93R7fYDWNxY3Kza5qwSFAtyRv7w1xBWG9b1YUrZ9bd2fbb3";
+  if (isset($_SESSION['fail']))
+  {
+    echo "<script>
+            swal.fire({
+              title: '".$_SESSION['fail']."',
+              icon: 'warning',
+              confirmButtonColor: '#ff0000',
+              confirmButtonText: 'Fechar'
+            });
+          </script>";
+
+    unset($_SESSION['fail']);
+
+  } 
+  else if (isset($_SESSION['success'])) 
+  {
+    echo "<script>
+            swal.fire({
+              title: '".$_SESSION['success']."',
+              icon: 'success',
+              confirmButtonColor: '#51d28c',
+              confirmButtonText: 'Fechar'
+            });
+          </script>";
+
+    unset($_SESSION['success']);
+
+  }
+}
+
+function getApi($request) 
+{
+
+  $url = env('BASE_URL').$request;
+  $token_access = env('TOKEN_ACCESS');
 
   $curl = curl_init($url);
 
@@ -74,7 +126,7 @@ function getApiJs($request)
   $data = json_encode($response);
 
   echo "<script>
-          function getApi() {
+          function getApiJs() {
             return {$data}
           }
         </script>";

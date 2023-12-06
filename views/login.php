@@ -1,19 +1,4 @@
 
-<style>
-  .logo {
-    transition: all .3s ease;
-    border: solid transparent 1px;
-    width: 50%;
-    margin: auto;
-    border-radius: 10px;
-  }
-
-  .logo:hover {
-    box-shadow: 0 2px 10px #000000;
-  }
-
-</style>
-
 <div class="row vh-100 justify-content-center align-items-center">
 
   <div class="card justify-content-center shadow" style="width: 350px; height: 400px;">
@@ -27,7 +12,7 @@
       <?php csrf(); ?>
 
       <div class="form-floating mb-3">
-        <input type="email" class="form-control" name="email" id="floatingInput" placeholder="name@example.com" value="<?php old('email') ?>">
+        <input type="email" class="form-control" name="email" id="floatingInput" placeholder="name@example.com" value="<?php old('email')??'' ?>">
         <label for="floatingInput">
           Email
         </label>

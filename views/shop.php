@@ -10,16 +10,17 @@
 
 </div>
 
-<div class="d-grid text-center shop-products" style="grid-template-columns: repeat(3,1fr);">
+<div class="text-center shop-products">
 
   <?php foreach($API_REQUEST as $k => $v): ?>
     
-    <div class="card m-2 shadow align-items-center" style="width: 20rem;">
+    <div class="card m-2 shadow align-items-center" style="width: 20rem; height: 26rem;">
 
       <img src="<?= $v['imagem'] ??'../views/assets/images/empty-photo-1.png' ?>" class="card-img-top mt-2" alt="Imagem do produto" style="width: 10rem;">
 
-      <div class="card-body d-flex flex-column justify-content-between">
+      <div class="card-body d-flex flex-column justify-content-between w-100">
         <input type="hidden" name="id" value="<?= $v['id'] ?>">
+
         <h5 class="card-title">
           <?= $v['descricao'] ?>
         </h5>
@@ -36,9 +37,13 @@
           Preço: R$ <?= number_format($v['tipo_preco'] , 2, ',', '.') ?>
         </p>
 
-        <a href="#" class="btn btn-primary text-center d-block">
-          Comprar
-        </a>
+        <div class="border w-100 d-block">
+          
+          <a href="#" class="btn btn-primary text-center d-block">
+            Comprar
+          </a>
+
+        </div>
 
       </div>
 
@@ -84,4 +89,4 @@
 
   </nav>
 
-<?php push('script-shop', '<script src="./views/assets/js/shop.js"></script>') ?>
+<?php push('scripts', '<script src="./views/assets/js/shop.js"></script>') ?>

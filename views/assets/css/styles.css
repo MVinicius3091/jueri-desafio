@@ -12,6 +12,7 @@ body
 .h-link
 {
   position: relative;
+  margin: 0 5px !important;
 }
 
 .h-link,
@@ -23,7 +24,7 @@ body
 .h-link::after 
 {
   position: absolute;
-  bottom: 0;
+  bottom: -1px;
   left: 0;
   margin: auto;
   width: 0%;
@@ -56,6 +57,12 @@ body
   }
 }
 
+.shop-products 
+{
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+}
+
 .hover:hover 
 {
   color: #00000071 !important;
@@ -75,5 +82,5 @@ body
 .loagind .fa-ellipsis 
 {
   font-size: 10rem;
-  color: red;
+  color: #DC3545;
 }

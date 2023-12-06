@@ -21,6 +21,23 @@ class ToolServices
       return $session; 
     }
   }
+
+  public static function getErrors($errors)
+  {
+    
+    $arrErrors = [];
+
+    foreach ($errors as $k => $v)
+    {
+      $arrErrors[str_replace('fisico.', '', $k)] = str_replace('fisico.', '', $v[0]);
+    }
+
+    foreach ($arrErrors as $ek => $ev)
+    {
+      self::sessionCreate('error.'.$ek, $ev);
+    }
+
+  }
 }
 
 function dump(mixed $dump)
@@ -53,27 +70,43 @@ function redirect(string $route)
   header('Location:'.$route);
 }
 
-function old()
+function oldServices()
 {
   foreach (request() as $key => $value) {
     ToolServices::sessionCreate($key, $value);
   }
 }
 
-function clearOldSession() {
-
+function clearOldSession() 
+{
   foreach (request() as $key => $value) {
-
-    if ($key == 'token') continue;
-    unset($_SESSION[$key]);
+    unset($_SESSION[$key], $_SESSION['fail']);
   }
 }
 
-function getApiJs($request) 
+function env($env) 
+{
+  $fileExist = file_get_contents('../../.env', true);
+
+  $keyAccess = explode("\n", $fileExist);
+
+  $access = [];
+
+  foreach ($keyAccess as $v) 
+  {
+    list($key, $val) = explode('=', $v);
+
+    $access[$key] = $val;
+  }
+
+  return $access[$env];
+}
+
+function getApiServices($request, $body=null) 
 {
 
-  $url = "https://jueri.com.br/sis/".$request;
-  $token_access = "j93R7fYDWNxY3Kza5qwSFAtyRv7w1xBWG9b1YUrZ9bd2fbb3";
+  $url = env('BASE_URL').$request;
+  $token_access = env('TOKEN_ACCESS');
 
   $curl = curl_init($url);
 
@@ -81,7 +114,12 @@ function getApiJs($request)
   curl_setopt($curl, CURLOPT_HTTPHEADER, [
       'Content-type: application/json',
       'Authorization: Bearer '.$token_access,
+      'Accept: application/json'
   ]);
+
+  if ($body) {
+    curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($body));
+  }
 
   $response = curl_exec($curl);
 
@@ -91,7 +129,5 @@ function getApiJs($request)
 
   curl_close($curl);
 
-  $data = json_decode($response, true);
-
-  return $data;
+  return $response;
 }

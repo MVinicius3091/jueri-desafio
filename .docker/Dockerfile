@@ -9,8 +9,7 @@ RUN apk add --no-cache \
     unzip \
     nano \
     nmap \
-    nginx \
-    npm 
+    nginx 
 
 RUN rm -rf /var/lib/apt/lists/*
 

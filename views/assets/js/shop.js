@@ -42,7 +42,7 @@ $(function ()
 
   let products = [];
 
-  const api = JSON.parse(getApi());
+  const api = JSON.parse(getApiJs());
 
   $('.btn-search').click(function () 
   {

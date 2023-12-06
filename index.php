@@ -2,10 +2,9 @@
   ini_set('display_errors',1);
   ini_set('display_startup_erros',1);
   error_reporting(E_ALL);
-  
-  session_start();
 
   require_once 'bootstrap.php';
+  
 ?>
 
 <!DOCTYPE html>
@@ -29,8 +28,16 @@
   <!-- BOOTSTRAP -->
   <link rel="stylesheet" href="../views/assets/bootstrap/css/bootstrap.min.css">
 
+  <!-- SWEETALERT -->
+  <link rel="stylesheet" href="../views/assets/sweetalert2/css/sweetalert2.min.css" type="text/css">
+  <!-- SWEETALERT -->
+  <script src="../views/assets/sweetalert2/js/sweetalert2.min.js"></script>
+
   <!-- STYLES CSS -->
   <link rel="stylesheet" href="../views/assets/css/styles.css" type="text/css">
+
+  <!-- MEDIA QUERIES -->
+  <link rel="stylesheet" href="../views/assets/css/media-queries.css" type="text/css">
 
 </head>
 <body>
@@ -79,11 +86,11 @@
 
             </li>
 
-            <li class="nav-item mt-3">
+            <li class="nav-item mt-3 ms-3">
 
-              <form class="d-flex" role="search">
+              <form class="d-flex position-relative" role="search">
 
-                <input class="form-control me-2" type="search" placeholder="Digite aqui..." aria-label="Search">
+                <input class="form-control me-2 search-header" type="search" placeholder="Digite aqui..." aria-label="Search">
                 <button class="btn btn-outline-light" type="button">
                   Buscar
                 </button>
@@ -102,9 +109,11 @@
 
   </header>
 
-  <main class="container min-vh-100 p-2 my-2">
+  <main class="container p-2 my-2">
 
     <?php require_once pages(); ?>
+  
+    <?php sweetalert(); ?>
 
   </main>
 
@@ -113,6 +122,10 @@
     <div class="row row-cols-3 row-cols-sm-3 row-cols-md-3">
 
       <div class="col mt-2 d-flex flex-column">
+
+        <h3 class="text-light">
+          Redes sociais
+        </h3>
 
         <a href="javascript:void(0)" class="my-2 text-decoration-none text-light hover w-50">
 
@@ -219,7 +232,10 @@
   <!-- JQUERY -->
   <script src="../views/assets/jquery/jqueryslim.min.js"></script>
 
+  <!-- JQUERY MASK CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/0.9.0/jquery.mask.min.js" integrity="sha512-oJCa6FS2+zO3EitUSj+xeiEN9UTr+AjqlBZO58OPadb2RfqwxHpjTU8ckIC8F4nKvom7iru2s8Jwdo+Z8zm0Vg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
   <script src="./views/assets/js/index.js"></script>
-  <?php stack('script-shop'); ?>
+  <?php stack('scripts'); ?>
 </body>
 </html>

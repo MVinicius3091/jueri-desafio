@@ -51,6 +51,6 @@ function redirect(string $route)
 
 function old(string $name) 
 {
-  echo session($name);
+  echo (isset($_SESSION[$name])) ? $_SESSION[$name] : '';
 }
 

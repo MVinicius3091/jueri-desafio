@@ -1,6 +1,50 @@
+$(function() 
+{
 
-function numberFormat(number) {
+  const AUTOCOMPLETE = 
+  [
+    '<a href="/dashboard" class="nav-link text-dark text-decoration-nano hover border border-bottom w-100">Princpal</a>',
+    '<a href="/login" class="nav-link text-dark text-decoration-nano hover border border-bottom w-100">Login</a>',
+    '<a href="/shop" class="nav-link text-dark text-decoration-nano hover border border-bottom w-100">Loja</a>',
+    '<a href="/shop" class="nav-link text-dark text-decoration-nano hover border border-bottom w-100">Peças</a>',
+    '<a href="/shop" class="nav-link text-dark text-decoration-nano hover border border-bottom w-100">Compras</a>',
+  ];
 
+  $('.search-header').keyup(function()
+  {
+    let _div = $('<div class="position-absolute top-100 d-flex flex-column align-items-center bg-light autocomplete" style="z-index: 10; width:15rem;">');
+
+    $.each(AUTOCOMPLETE, function (_, event) 
+    { 
+      _div.append(event);
+
+      if ($('.search-header').parent().find('div.autocomplete').length == 0) {
+        $('.search-header').after(_div);
+      }
+    });
+
+    if ($(this).val() == '') 
+    {
+      $(this).parent().find('div.autocomplete').remove();
+    }
+  });
+
+  $('header ul.navbar-nav li.h-link a').each(function() 
+  {
+    let uri = window.location.href;
+
+    if ($(this).prop('href') == uri)
+    {
+      $(this).parent().css('border-bottom', 'solid 3px #00000071');
+    }
+
+  })
+
+});
+
+
+function numberFormat(number) 
+{
   return Intl.NumberFormat('pt-br', {
     style: 'currency',
     currency: 'BRL',
@@ -9,8 +53,8 @@ function numberFormat(number) {
   }).format(number);
 }
 
-function loading() {
-
+function loading() 
+{
   let container = document.createElement('div');
   container.className = 'position-fixed loagind';
 
@@ -23,9 +67,11 @@ function loading() {
 
   setTimeout(() => {
     container.classList.add('d-none');
-  }, 1000);
+  }, 2500);
 
 }
+
+
 
 // BODY VENDA DE UM PRODUTO
 // {
