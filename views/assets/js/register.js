@@ -19,6 +19,22 @@ $(function() {
       url: `https://viacep.com.br/ws/${cep}/json`,
       dataType: "json",
       success: function (data) {
+
+        if (data.erro) 
+        {
+          setTimeout(() => 
+          {
+            swal.fire({
+              title: 'Cep não encontrado!',
+              icon: 'warning',
+              confirmButtonColor: '#ff0000',
+              confirmButtonText: 'Fechar'
+            });
+          }, 2000);
+          
+          return;
+        }
+
         let {logradouro, localidade, bairro, uf} = data;
         
         $('input[name=logradouro]').val(logradouro);
@@ -29,7 +45,6 @@ $(function() {
     });
 
   });
-
 
   $('input#flexSwitchCheckDefault').change(function (e) { 
     $(this).attr('checked', true);

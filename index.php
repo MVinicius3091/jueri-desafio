@@ -62,7 +62,7 @@
 
         <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
 
-          <ul class="navbar-nav align-items-center" >
+          <ul class="navbar-nav align-items-center align-items-sm-end align-items-md-center" >
 
             <li class="nav-item h-link">
               <a class="nav-link text-light fs-5 h-active" aria-current="page" href="/dashboard">

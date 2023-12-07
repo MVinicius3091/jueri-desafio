@@ -21,6 +21,7 @@ function requestRouter(string $route)
     '/dashboard' => 'views'.$route.'?'.$queryString,
     '/shop' => 'views'.$route.'?'.$queryString,
     '/controller/ApiController' => $route.'?'.$queryString,
+    '/logout' => 'app/controller/LogoutController',
   ];
 
   $file = '';

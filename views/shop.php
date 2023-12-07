@@ -1,5 +1,5 @@
 
-<div class="nav">
+<div class="nav justify-content-lg-between justify-content-md-between justify-content-sm-center justify-content-center">
 
   <div class="d-flex form-product" role="search">
     <input class="form-control me-2 search-product" type="search" placeholder="Buscar produto..." aria-label="Search">
@@ -7,6 +7,31 @@
       Buscar
     </button>
   </div>
+
+  <?php if (auth()): ?>
+    <div class="d-flex align-items-center mt-sm-2">
+      <h4 class="p-0 m-0 text-truncate" style="max-width: 350px;">Bem-vindo, 
+        <?= ucfirst(session('nome')) ?>
+      </h4>
+
+      <div class="ms-4">
+        <form action="../app/controller/LogoutController.php" method="post" class="d-inline">
+
+          <button type="submit" class="border-0" style="background: transparent;">
+            <i class="fa-solid fa-right-from-bracket fa-xl"></i>
+          </button>
+
+        </form>
+      </div>
+    </div>
+
+    <?php else: ?>
+
+      <div>
+        <h4>Bem-vindo, Clinte</h4>
+      </div>
+
+  <?php endif; ?>
 
 </div>
 

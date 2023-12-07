@@ -22,9 +22,8 @@ class ToolServices
     }
   }
 
-  public static function getErrors($errors)
+  public static function getErrors(array $errors)
   {
-    
     $arrErrors = [];
 
     foreach ($errors as $k => $v)
@@ -37,6 +36,11 @@ class ToolServices
       self::sessionCreate('error.'.$ek, $ev);
     }
 
+  }
+
+  public static function redirect(string $route) 
+  {
+    header('Location:'.$route);
   }
 }
 
@@ -65,10 +69,7 @@ function request(string $request=null)
   }
 }
 
-function redirect(string $route) 
-{
-  header('Location:'.$route);
-}
+
 
 function oldServices()
 {
@@ -79,12 +80,10 @@ function oldServices()
 
 function clearOldSession() 
 {
-  foreach (request() as $key => $value) {
-    unset($_SESSION[$key], $_SESSION['fail']);
-  }
+  session_unset();
 }
 
-function env($env) 
+function env(string $env) 
 {
   $fileExist = file_get_contents('../../.env', true);
 
@@ -102,7 +101,7 @@ function env($env)
   return $access[$env];
 }
 
-function getApiServices($request, $body=null) 
+function getApiServices(string $request, $body=null) 
 {
 
   $url = env('BASE_URL').$request;

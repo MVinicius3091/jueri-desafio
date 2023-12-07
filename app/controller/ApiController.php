@@ -45,4 +45,67 @@ class ApiController extends ToolServices
     } 
   }
 
+  public static function checkclient(string|int $client)
+  {
+    $idx = 1;
+    $a = 0;
+    $matchClient = [];
+
+    while ($a <= $idx) 
+    {
+      $clients = self::getClients($a++);
+
+      foreach ($clients as $c)
+      {
+        if ($c['email'] == $client){
+
+          $matchClient['client'] = [
+            'nome' => $c['nome'],
+            'email' => $c['email'],
+            'cpf' => $c['cpf'],
+          ];
+
+        } else 
+        {
+          $idx++;
+        }
+      }
+
+      $a++;
+    }
+    
+    if (count($matchClient) == 0) {
+      return false;
+    }
+    
+    $tokenAuth = uniqid().time();
+    $matchClient['client']['token_auth'] = $tokenAuth;
+    
+    return $matchClient['client'];
+
+  }
+
+  public static function getClients(string|int $page)
+  {
+
+    $response = getApiServices('api/v1/'.env('CLIENT_PARAM').'/cliente?page='.$page);
+    $data = json_decode($response, true);
+
+    $fisico = [];
+    
+    foreach ($data['data'] as $v) 
+    {
+      if ($v['fisico'] != null)
+      {
+        $fisico[] = [
+          'nome' => $v['fisico']['nome'],
+          'email' => $v['fisico']['email'],
+          'cpf' => $v['fisico']['cpf'],
+        ] ;
+
+      } 
+    }
+
+    return $fisico;
+  }
 }

@@ -1,5 +1,6 @@
 $(function() 
 {
+  let uri = window.location;
 
   const AUTOCOMPLETE = 
   [
@@ -31,17 +32,20 @@ $(function()
 
   $('header ul.navbar-nav li.h-link a').each(function() 
   {
-    let uri = window.location.href;
+    let href = uri.origin + uri.pathname;
 
-    if ($(this).prop('href') == uri)
+    if ($(this).prop('href') == href)
     {
       $(this).parent().css('border-bottom', 'solid 3px #00000071');
-    }
+    } 
+  });
 
-  })
+  if (uri.pathname == '/')
+  {
+    $('.h-active').parent().css('border-bottom', 'solid 3px #00000071');
+  }
 
 });
-
 
 function numberFormat(number) 
 {

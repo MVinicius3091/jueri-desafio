@@ -2,6 +2,24 @@
 
 require_once 'bootstrap.php';
 
+function sessionCreate(string $key, string $session)
+{
+  $_SESSION[$key] = $session;
+}
+
+function getSession(string $key) 
+{
+  $session = '';
+
+  if (isset($_SESSION[$key]) && !empty($_SESSION[$key])) {
+    $session = $_SESSION[$key]; 
+    unset($_SESSION[$key]);
+
+    echo $session;
+  }
+
+}
+
 function dump(mixed $dump)  
 {
   var_dump($dump);
@@ -17,14 +35,14 @@ function route(string $route)
   echo $file?? false;
 }
 
-
 function auth() 
 {
-  
-  if (!session('auth') || session('auth') == '') 
+  if (!isset($_SESSION['token_auth']) || $_SESSION['token_auth'] == '') 
   {
-    redirect('/');
+    return false;
   } 
+
+  return true;
 }
 
 function request($request=null) {
@@ -51,6 +69,8 @@ function redirect(string $route)
 
 function old(string $name) 
 {
+  if (auth()) return;
+  
   echo (isset($_SESSION[$name])) ? $_SESSION[$name] : '';
 }
 

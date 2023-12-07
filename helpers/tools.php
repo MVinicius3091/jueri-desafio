@@ -2,24 +2,6 @@
 
 session_start();
 
-function sessionCreate(string $key, string $session)
-{
-  $_SESSION[$key] = $session;
-}
-
-function getSession(string $key) 
-{
-  $session = '';
-
-  if (isset($_SESSION[$key]) && !empty($_SESSION[$key])) {
-    $session = $_SESSION[$key]; 
-    unset($_SESSION[$key]);
-
-    echo $session;
-  }
-
-}
-
 function push($key, $push)
 {
   $_SESSION[$key] = $push;

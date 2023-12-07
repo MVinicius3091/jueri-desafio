@@ -13,15 +13,31 @@ class LoginController extends ApiController
   {
     $token = ToolServices::getSession('token');
     
-    if (request('token') != $token) {
-      old();
-      redirect('/login');
-    } else {
+    if (request('token') != $token) 
+    {
       clearOldSession();
+      oldServices();
+
+      ToolServices::sessionCreate('fail', 'Erro ao efetuar o login');
+      ToolServices::redirect('/login');
+    } 
+
+    $client = ApiController::checkclient(request('email'));
+
+    if (!$client) {
+      oldServices();
+      ToolServices::sessionCreate('fail', 'Usuário não encontrado!');
+      ToolServices::redirect('/login');
+      return;
     }
 
-    $te = ApiController::create(['teste'=>'teste']);
+    clearOldSession();
 
+    foreach($client as $k => $c)
+    {
+      ToolServices::sessionCreate($k, $c);
+    }
+    ToolServices::redirect('/shop');
   }
 
 }

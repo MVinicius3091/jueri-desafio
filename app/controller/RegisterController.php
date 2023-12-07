@@ -14,7 +14,7 @@ class RegisterController extends ApiController
       oldServices();
 
       ToolServices::sessionCreate('fail', 'Erro ao cadastrar!');
-      redirect('/register');
+      ToolServices::redirect('/register');
       return;
 
     } 
@@ -25,14 +25,14 @@ class RegisterController extends ApiController
     {
       clearOldSession();
       ToolServices::sessionCreate('success', 'Cadastrado com sucesso!');
-      redirect('/register');
+      ToolServices::redirect('/register');
       return;
     }
  
     ToolServices::sessionCreate('fail', 'Erro ao cadastrar!');
     ToolServices::getErrors($response['errors']);
     oldServices();
-    redirect('/register');
+    ToolServices::redirect('/register');
     return;
   }
 }
