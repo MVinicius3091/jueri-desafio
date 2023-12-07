@@ -1,6 +1,12 @@
 
 <?php if (!auth()): ?>
 
+  <?php if (request('buy')): ?>
+    <h3 class="w-50 text-center fw-bolde m-auto">
+      Faça o login pra continuar!!
+    </h3>
+  <?php endif; ?>
+
   <div class="row my-4 justify-content-center align-items-center">
 
     <div class="card justify-content-center shadow" style="width: 350px; height: 400px;">

@@ -27,12 +27,21 @@ function dump(mixed $dump)
 
 function route(string $route) 
 {
-  $path = explode('.', $route);
-  $path = $path[1].'/'.ucfirst($path[0]).ucfirst($path[1]);
+  $query = str_contains($_SERVER['REQUEST_URI'], '?');
+  $uri = null;
 
-  $file = requestRouter($path);
+  if ($query) 
+  {
+    [$u, $q] = explode('?', $_SERVER['REQUEST_URI']);
+    $uri = $u;
+  } 
+  else 
+  {
+    $uri = $_SERVER['REQUEST_URI'];
+  }
 
-  echo $file?? false;
+  return ($uri == $route) ? true : false;
+
 }
 
 function auth() 
@@ -47,7 +56,7 @@ function auth()
 
 function request($request=null) {
 
-  return (isset($_REQUEST[$request])) ? $_REQUEST[$request] : $_REQUEST;
+  return (isset($_REQUEST[$request])) ? $_REQUEST[$request] : false;
 }
 
 function requestType(string $type): bool 

@@ -1,5 +1,5 @@
 
-<div class="row row-cols-1 row-cols-sm-1 row-cols-md-1 min-vh-100">
+<div class="row row-cols-1 row-cols-sm-1 row-cols-md-1 min-vh-75">
 
   <div class="col m-auto text-center">
     <h4>

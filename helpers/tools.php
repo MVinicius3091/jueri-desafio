@@ -85,7 +85,6 @@ function sweetalert()
 
 function getApi($request) 
 {
-
   $url = env('BASE_URL').$request;
   $token_access = env('TOKEN_ACCESS');
 

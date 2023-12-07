@@ -75,6 +75,97 @@ function loading()
 
 }
 
+function modals(product) {
+
+  if (typeof product != 'object') {
+    return false;
+  }
+
+  let {image, description, value, quantity} = product;
+
+  let modal = `<div class="modal fade show" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+                <div class="modal-dialog">
+
+                  <div class="modal-content">
+
+                    <div class="modal-header">
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+                    <div class="modal-body text-center">
+
+                      <div class="card m-2 shadow align-items-center m-auto" style="width: 20rem; height: 26rem;">
+                        <img src="${image}" class="card-img-top mt-2" alt="Imagem do produto" style="width: 10rem;">
+
+                        <div class="card-body d-flex flex-column justify-content-between w-100">
+                          <input type="hidden" name="id" value="787541">
+                
+                          <h5 class="card-title">
+                            ${description}        
+                          </h5>
+                
+                          <div>
+
+                            <p class="card-text text-start">
+                              ${quantity}       
+                            </p>
+
+                            <p class="card-text text-start">
+                              ${value}       
+                            </p>
+                            
+                          </div>
+              
+                        </div>
+
+                      </div>
+
+                    </div>
+
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                      <button type="button" class="btn btn-primary btn-add-product">
+                        Adicionar no carrinho
+                      </button>
+                    </div>
+
+                  </div>
+
+                </div>
+
+              </div>`;
+
+  document.querySelector('.modal-content').innerHTML = modal;
+
+}
+
+function setLocaStorage(key, content)
+{
+  if (typeof content !== 'object')
+  {
+    localStorage.setItem(key, content);
+    return;
+  } 
+  else
+  {
+    localStorage.setItem(key, JSON.stringify(content));
+  } 
+}
+
+function getLocalStorage(key) 
+{  
+  return localStorage.getItem(key);
+}
+
+function clearLocalStorage()
+{
+  localStorage.clear();
+}
+
+const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
+
 
 
 // BODY VENDA DE UM PRODUTO

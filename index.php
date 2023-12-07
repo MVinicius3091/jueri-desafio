@@ -112,8 +112,10 @@
   <main class="container p-2 my-2">
 
     <?php require_once pages(); ?>
-  
+
     <?php sweetalert(); ?>
+
+    <div class="modal-content"></div>
 
   </main>
 
@@ -227,6 +229,7 @@
   </footer>
 
   <!-- BOOTSTRAP -->
+  <script src="../views/assets/bootstrap/js/bootstrap.propper.min.js"></script>
   <script src="../views/assets/bootstrap/js/bootstrap.bundle.js"></script>
 
   <!-- JQUERY -->

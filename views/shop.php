@@ -14,10 +14,23 @@
         <?= ucfirst(session('nome')) ?>
       </h4>
 
-      <div class="ms-4">
-        <form action="../app/controller/LogoutController.php" method="post" class="d-inline">
+      <div class="ms-4 d-flex align-items-center justify-content-center">
 
-          <button type="submit" class="border-0" style="background: transparent;">
+        <div class="border rounded-circle p-1 mx-3">
+
+          <a href="/shopping-cart" class="position-relative" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Ver carrinho">
+
+            <img src="../views/assets/images/cart.png" alt="Ícone do carrinho de compras" width="40px">
+
+            <span class="quantity-product position-absolute bg-danger rounded-circle text-center text-light p-2 d-inline-flex justify-content-center align-items-center" style="width: 25px; height: 25px; right: -14px; top: -22px;">0</span>
+
+          </a>
+
+        </div>
+
+        <form action="../app/controller/LogoutController.php" method="post" class="overflow-hidden m-0 p-0 ms-3" style="height: 50px;">
+
+          <button type="submit" class="border rounded-circle px-3 h-100" style="background: transparent;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Sair">
             <i class="fa-solid fa-right-from-bracket fa-xl"></i>
           </button>
 
@@ -39,7 +52,7 @@
 
   <?php foreach($API_REQUEST as $k => $v): ?>
     
-    <div class="card m-2 shadow align-items-center" style="width: 20rem; height: 26rem;">
+    <div class="card m-2 shadow align-items-center" style="width: 20rem; height: 28rem;">
 
       <img src="<?= $v['imagem'] ??'../views/assets/images/empty-photo-1.png' ?>" class="card-img-top mt-2" alt="Imagem do produto" style="width: 10rem;">
 
@@ -63,10 +76,20 @@
         </p>
 
         <div class="border w-100 d-block">
-          
-          <a href="#" class="btn btn-primary text-center d-block">
-            Comprar
-          </a>
+
+          <?php if (auth()): ?>
+
+            <a href="javascript:void(0)" class="btn btn-primary text-center d-block btn-buy">
+              Comprar
+            </a>
+
+          <?php else: ?>
+
+            <a href="/login?buy=false" class="btn btn-primary text-center d-block ">
+              Comprar
+            </a>
+
+          <?php endif; ?>
 
         </div>
 

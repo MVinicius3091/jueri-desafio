@@ -58,7 +58,7 @@ function request(string $request=null)
 {
   if (isset($_REQUEST[$request]) || $_REQUEST) {
 
-    if (! empty($_REQUEST[$request])) {
+    if (!empty($_REQUEST[$request])) {
 
       return $_REQUEST[$request];
 
