@@ -1,6 +1,6 @@
 
 <div style="background: #fff; text-align: center; border-radius: 5px; margin: 10px 0;">
-  <img src="./views/assets/images/logo.png" />
+  <img src="./views/assets/images/readme/pages/logo.png" />
 </div>
 
 <h1 style="text-align: center;">
@@ -19,10 +19,9 @@
   - Página principal
 </p>
 
-<video width="400" controls>
-  <source src="./views/assets/video/dashboard.mp4" type="video/mp4">
-  <source src="./views/assets/video/dashboard.ogg" type="video/ogg">
-</video>
+<div style=" text-align: center; border-radius: 5px; margin: 10px 0;">
+  <img src="./views/assets/images/readme/gif/dashboard.gif" />
+</div>
 
 <hr>
 
@@ -98,13 +97,12 @@
 <hr>
 
 <p>
-  - Loja se autentificação
+  - Loja sem autentificação
 </p>
 
-<video width="400" controls>
-  <source src="./views/assets/video/shop.mp4" type="video/mp4">
-  <source src="./views/assets/video/shop.ogg" type="video/ogg">
-</video>
+<div style=" text-align: center; border-radius: 5px; margin: 10px 0;">
+  <img src="./views/assets/images/readme/gif/shop.gif" />
+</div>
 
 <hr>
 
@@ -112,10 +110,9 @@
   - Loja com autentificação
 </p>
 
-<video width="400" controls>
-  <source src="./views/assets/video/shop-auth.mp4" type="video/mp4">
-  <source src="./views/assets/video/shop-auth.ogg" type="video/ogg">
-</video>
+<div style=" text-align: center; border-radius: 5px; margin: 10px 0;">
+  <img src="./views/assets/images/readme/gif/shop-auth.gif" />
+</div>
 
 <hr>
 
@@ -147,10 +144,9 @@
   - Filtro de produtos
 </p>
 
-<video width="400" controls>
-  <source src="./views/assets/video/search-products.mp4" type="video/mp4">
-  <source src="./views/assets/video/search-products.ogg" type="video/ogg">
-</video>
+<div style=" text-align: center; border-radius: 5px; margin: 10px 0;">
+  <img src="./views/assets/images/readme/gif/search-product.gif" />
+</div>
 
 <hr>
 
@@ -213,3 +209,46 @@
 </div>
 
 <hr>
+
+<h1 id="instructions">
+  Instruções 
+</h1>
+
+
+<h3>
+  Docker
+</h3>
+
+<p>
+  Para iniciar o projeto com docker, certifique-se de que tenha o docker instalado na sua máquina. Caso contrário, você pode optar por instalá-lo visitando a página oficial <a href="https://docs.docker.com/engine/install/">docs.docker.com</a> e seguir o passo-a-passo da instalação conforme o seu sistema operacional
+</p>
+
+<h4>
+  Comandos para iniciar o projeto com docker
+</h4>
+
+ver os containers em execução: `docker ps`
+
+baixar a imagem e iniciar o projeto: `docker compose -d --build`
+
+depois disso, caso não ocorra nenhum erro, a porta `:80` do seu navegador irá executar o projeto.
+
+certifique-se de que a porta `:80` esteja disponível na sua máquina!
+
+## Caso não queira usar o Docker para iniciar o projeto, siga o seguinte:
+
+- Inicie o vscode no diretório raiz do projeto;
+
+- Abra o terminal `Ctrl + j` e execute o comando: `php -S localhost:<porta>` substitua `<porta>` conforme preferir;
+
+  - Dicas de portas: `8080`, `8800`, `8000`, `5000`...
+
+***OBS: é preciso ter o php intalado na sua máquina. Para saber disso digite no terminal o comando: `php -v`
+
+## .env
+
+- Antes de começar a usar o sistema, crie um arquivo `.env` com as variáveis de ambiente para que as requisições com a api sejam bem sucedidas.
+
+- Veja os exemplos das variáveis no arquivo `.env.example`
+
+### Feito isso o projeto estará pronto para uso!!! 
