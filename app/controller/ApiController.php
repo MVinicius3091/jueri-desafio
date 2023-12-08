@@ -108,4 +108,54 @@ class ApiController extends ToolServices
 
     return $fisico;
   }
+
+  public static function createSale(array $data)
+  {
+    $purchase = "{";
+
+    $purchase .= '
+      "comprador": 
+      {
+        "tipo": "cliente",
+        "nome": "'.$data['client']['nome'].'",
+        "email": "'.$data['client']['email'].'",
+        "cpf_cnpj": "'.$data['client']['cpf'].'"
+      },';
+
+
+    $purchase .= '"itens": [';
+
+    foreach ($data['product'] as $cd)
+    {
+      $purchase .= '
+        { 
+          "produto": {
+            "codigo_barras": "'.$cd['code'].'"
+          },
+          "quantidade": "1",
+          "valor_unitario": "'.$cd['value'].'",
+          "fk_tipo_preco_id": "1"
+        },';
+    }
+
+    $purchase = rtrim($purchase, ',');
+
+    $date = date('Y-m-d', strtotime('+3 days'));
+
+    $purchase .= '],
+      "forma_pagamento": [{
+        "boleto": {
+          "valor": "'.$data['total'].'",
+          "data_vencimento": "'.$date.'",
+          "numero_boleto": "8880"
+        }
+      }]
+    }';
+
+    $create = getApiServices('api/v1/'.env('CLIENT_PARAM').'/venda', $purchase);
+
+    dump($create);
+
+    
+  }
 }

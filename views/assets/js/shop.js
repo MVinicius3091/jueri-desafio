@@ -94,6 +94,7 @@ $(function ()
       productCartAdd.push({
         image: product.image,
         description: product.description,
+        code: product.code,
         value: product.value,
         quantity: product.quantity,
       });

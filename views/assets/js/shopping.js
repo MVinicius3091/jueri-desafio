@@ -16,6 +16,7 @@ $(function()
       PRODUCT.push({
         image: product.image,
         description: product.description,
+        code: product.code,
         value: product.value,
         quantity: product.quantity,
       });
@@ -46,6 +47,34 @@ $(function()
         render();
       }
     })
+  });
+
+  $('.btn-finish').click(function() 
+  {
+    let LocalProducts = JSON.parse(getLocalStorage('products'));
+    let total = $('#total-purchase').text().replace(/[R$\s]/g, '').replace(',', '.');
+    let requestProducts = [];
+
+    LocalProducts.forEach(product => {
+      requestProducts.push({
+        code: product.code.replace('cód:', ''),
+        value: product.value.replace('Preço: R$ ', '').replace(',', '.'),
+      });
+    });
+
+    $.ajax({
+      type: "post",
+      url: "../app/controller/CheckoutController.php",
+      data: {
+        product: requestProducts,
+        total: total
+      },
+      dataType: "json",
+      success: function (data) {
+        console.log(data);
+      }
+    });
+
   });
 
 });

@@ -42,6 +42,11 @@ class ToolServices
   {
     header('Location:'.$route);
   }
+
+  public static function sessionServices(string $session=null)
+  {
+    return (isset($_SESSION[$session])) ? $_SESSION[$session] : $_SESSION;
+  }
 }
 
 function dump(mixed $dump)
@@ -68,7 +73,6 @@ function request(string $request=null)
     }
   }
 }
-
 
 
 function oldServices()
@@ -116,14 +120,20 @@ function getApiServices(string $request, $body=null)
       'Accept: application/json'
   ]);
 
-  if ($body) {
+  if ($body && gettype($body) != 'string') 
+  {
     curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($body));
-  }
+  } 
+  else
+  {
+    curl_setopt($curl, CURLOPT_POSTFIELDS, $body);
+  } 
 
   $response = curl_exec($curl);
 
-  if (curl_errno($curl)) {
-      die('Erro na requisição: ' . curl_error($curl));
+  if (curl_errno($curl)) 
+  {
+    die('Erro na requisição: ' . curl_error($curl));
   }
 
   curl_close($curl);
