@@ -231,11 +231,11 @@ ver os containers em execução: `docker ps`
 
 baixar a imagem e iniciar o projeto: `docker compose -d --build`
 
-depois disso, caso não ocorra nenhum erro, a porta `:80` do seu navegador irá executar o projeto.
+depois disso, caso não ocorra nenhum erro, na porta `localhost:80` do seu navegador irá executar o projeto.
 
 certifique-se de que a porta `:80` esteja disponível na sua máquina!
 
-## Caso não queira usar o Docker para iniciar o projeto, siga o seguinte:
+## Caso não queira usar o Docker para iniciar o projeto, siga o seguinte passo:
 
 - Inicie o vscode no diretório raiz do projeto;
 
