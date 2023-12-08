@@ -229,7 +229,7 @@
 
 ver os containers em execução: `docker ps`
 
-baixar a imagem e iniciar o projeto: `docker compose -d --build`
+baixar a imagem e iniciar o projeto: `docker compose up -d --build`
 
 depois disso, caso não ocorra nenhum erro, na porta `localhost:80` do seu navegador irá executar o projeto.
 
