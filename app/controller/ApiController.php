@@ -31,8 +31,13 @@ class ApiController extends ToolServices
     ];
 
     $response = getApiServices('api/v1/'.env('CLIENT_PARAM').'/cliente', $body);
-
     $data = json_decode($response, true);
+
+    if (!$response) {
+      ToolServices::redirect('/register');
+      ToolServices::sessionCreate('fail', 'Ops!, ocorreu algum erro. Tente novamente!');
+      return;  
+    }
 
     if (array_key_exists('fisico', $data)) 
     {

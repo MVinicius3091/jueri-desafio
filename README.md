@@ -46,6 +46,16 @@
 <hr>
 
 <p>
+  - Ao tentar efetuar uma compra sem estar logado, o usuário é redirecionado para a tela de login 
+</p>
+
+<div style=" text-align: center; border-radius: 5px; margin: 10px 0;">
+  <img src="./views/assets/images/readme/pages/login-check.png" />
+</div>
+
+<hr>
+
+<p>
   - Cadastro de clientes 
 </p>
 
@@ -206,6 +216,16 @@
 
 <div style=" text-align: center; border-radius: 5px; margin: 10px 0;">
   <img src="./views/assets/images/readme/pages/shopping.png" />
+</div>
+
+<hr>
+
+<p>
+  - Lista de compras vazia
+</p>
+
+<div style=" text-align: center; border-radius: 5px; margin: 10px 0;">
+  <img src="./views/assets/images/readme/pages/empty-shopping.png" />
 </div>
 
 <hr>
