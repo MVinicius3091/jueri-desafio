@@ -8,7 +8,7 @@
   <div class="col-10 mb-2 shoppin-cart-list">
   </div>
 
-  <div class="col-10 purchase">
+  <div class="col-10  purchase">
     <h4>
       Valor da compra: <span id="total-purchase"></span>
     </h4>
@@ -16,18 +16,21 @@
 
   <div class="col-10 mt-4 text-center">
 
-    <a href="/shop" class="btn btn-primary" type="button">
+    <a href="/shop" class="btn btn-primary m-2" type="button">
       Continuar comprando
     </a>
 
-    <button type="button" class="btn btn-success btn-finish">
+    <button type="button" class="btn btn-success m-2 btn-finish">
       Finalizar compra
     </button>
 
-    <button type="button" class="btn btn-danger btn-clear-cart">
+    <button type="button" class="btn btn-danger m-2 btn-clear-cart">
       Limpar carrinho
     </button>
 
+    <a href="/purchases" class="btn btn-secondary m-2" type="button">
+      Ver compras
+    </a>
   </div>
 
 </div>

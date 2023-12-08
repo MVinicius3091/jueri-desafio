@@ -11,6 +11,8 @@ if (getLocalStorage('cart')) {
 
 $(function () 
 {
+  loading();
+  
   let url = window.location.origin;
   let uri = window.location.search;
   let pathName = window.location.pathname;

@@ -1,11 +1,26 @@
 
 let CARD = $('<div>');
 let PRODUCT = [];
+let PURCHASES = [];
 let HTML = ''
 let SUM = 0;
 
 let containerCard = $('.shoppin-cart-list');
 let localProducts = JSON.parse(getLocalStorage('products'));
+let purchases = JSON.parse(getLocalStorage('purchases'));
+
+if (purchases)
+{
+  purchases.forEach(purchase => 
+  {
+    PURCHASES.push({
+      image: purchase.image,
+      cod: purchase.cod,
+      value: purchase.value,
+      description: purchase.description,
+    });
+  });
+}
 
 $(function()
 { 
@@ -29,7 +44,6 @@ $(function()
 
   $('.btn-clear-cart').click(function()
   {
-
     swal.fire({
       title: 'Deseja realmente limpar o carrinho?',
       showDenyButton: true,
@@ -43,14 +57,17 @@ $(function()
       if (result.isConfirmed)
       {
         clearLocalStorage();
-        PRODUCT = getLocalStorage('products');
+        PRODUCT = [];
         render();
+        unloading();
       }
     })
   });
 
   $('.btn-finish').click(function() 
   {
+    loading();
+
     let LocalProducts = JSON.parse(getLocalStorage('products'));
     let total = $('#total-purchase').text().replace(/[R$\s]/g, '').replace(',', '.');
     let requestProducts = [];
@@ -71,12 +88,49 @@ $(function()
       },
       dataType: "json",
       success: function (data) {
-        console.log(data);
+
+        if (data.error)
+        {
+          swal.fire({
+            title: 'Erro ao efetuar a compra, tente novamento mais tarde!',
+            text: 'Tivemos um problema ao enviar a sua compra, pedimos desculpas pelo transtorno!',
+            icon: 'info',
+            confirmButtonColor: '#ff0000',
+            confirmButtonText: 'Fechae',
+          });
+          
+        } 
+        else
+        {
+          swal.fire({
+            title: 'Compra efetuada com sucesso!',
+            text: data.message,
+            icon: 'success',
+            confirmButtonColor: '#A5DC86',
+            confirmButtonText: 'Ok',
+          });
+
+          let products = JSON.parse(getLocalStorage('products'));
+
+          products.forEach(product => 
+          {
+            PURCHASES.push({
+              image: product.image,
+              cod: product.cod,
+              value: product.value,
+              description: product.description,
+            });
+          });
+
+          setLocaStorage('purchases', JSON.stringify(PURCHASES));
+          clearLocalStorage();
+          PRODUCT = [];
+          render();
+        }
       }
+
     });
-
   });
-
 });
 
 function render() 
@@ -99,7 +153,7 @@ function render()
               </div>
 
               <div class="col-10 text-center">
-                <img src="../views/assets/images/empty-cart.png" alt="Ícone de carrinho vazio" width="200px"/>
+                <img src="../views/assets/images/empty-cart.png" alt="Ícone de carrinho vazio" width="250px"/>
               </div>
             </div>`);
     
@@ -128,8 +182,8 @@ function render()
 
                 <div class="row g-0">
                 
-                  <div class="col-md-2 border m-2">
-                    <img src="${image}" class="img-fluid rounded-start" alt="Imagem do produto">
+                  <div class="col-md-2 col-sm-10 border m-2 m-sm-auto m-md-auto">
+                    <img src="${image}" class="img-fluid rounded-start w-100" alt="Imagem do produto">
                   </div>
                 
                   <div class="col-md-6">
@@ -148,7 +202,7 @@ function render()
                 
                   </div>
 
-                  <div class="col-md-3 text-end">
+                  <div class="col-md-3 p-2 text-end">
 
                     <a type="button" id="${index}" onclick="removeProduct(event)" class="border p-2 rounded-circle mt-3 btn-shopping-trash">
 

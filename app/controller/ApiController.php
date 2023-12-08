@@ -154,8 +154,16 @@ class ApiController extends ToolServices
 
     $create = getApiServices('api/v1/'.env('CLIENT_PARAM').'/venda', $purchase);
 
-    dump($create);
+    $response = json_decode($create, true);
 
+    if (array_key_exists('errors', $response))
+    {
+      echo json_encode(['error' => true]);
+      return false;
+    }
+    
+    echo json_encode(['error' => false, 'message' => $response['message']]);
+    return true;
     
   }
 }

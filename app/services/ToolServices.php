@@ -47,6 +47,7 @@ class ToolServices
   {
     return (isset($_SESSION[$session])) ? $_SESSION[$session] : $_SESSION;
   }
+
 }
 
 function dump(mixed $dump)
@@ -124,7 +125,7 @@ function getApiServices(string $request, $body=null)
   {
     curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($body));
   } 
-  else
+  else if ($body)
   {
     curl_setopt($curl, CURLOPT_POSTFIELDS, $body);
   } 

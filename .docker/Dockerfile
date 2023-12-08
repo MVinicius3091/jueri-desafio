@@ -24,8 +24,6 @@ RUN apk add \
     php82-openssl \
     php82-iconv \
     php82-zip \
-    php82-pdo \
-    php82-pdo_mysql \
     php82-fpm \
     php82-pgsql \
     php82-session \

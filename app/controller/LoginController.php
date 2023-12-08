@@ -37,6 +37,8 @@ class LoginController extends ApiController
     {
       ToolServices::sessionCreate($k, $c);
     }
+
+    ToolServices::sessionCreate('logged', 'Login efetuado com sucesso!');
     ToolServices::redirect('/shop');
   }
 

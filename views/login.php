@@ -60,3 +60,4 @@
   </div>
 
 <?php endif; ?>
+<?php push('scripts', '<script>loading()</script>');

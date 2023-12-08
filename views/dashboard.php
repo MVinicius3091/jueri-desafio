@@ -406,6 +406,8 @@
 
 </section>
 
+<?php push('scripts', '<script>loading()</script>');
+
 
 
   

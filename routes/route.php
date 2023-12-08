@@ -18,6 +18,7 @@ function requestRouter(string $route)
     '/login' => 'views/login'.'?'.$queryString,
     '/register' => 'views/register',
     '/shopping-cart' => 'views/shopping',
+    '/purchases' => 'views/purchases',
     '/' => 'views/dashboard',
     '/dashboard' => 'views'.$route.'?'.$queryString,
     '/shop' => 'views'.$route.'?'.$queryString,

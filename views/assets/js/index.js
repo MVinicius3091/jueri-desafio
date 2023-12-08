@@ -57,22 +57,32 @@ function numberFormat(number)
   }).format(number);
 }
 
-function loading() 
+function loading(time=true) 
 {
   let container = document.createElement('div');
-  container.className = 'position-fixed loagind';
+  container.className = 'position-fixed loading';
 
   let dot = document.createElement('i');
   dot.className = 'fa-solid fa-ellipsis fa-bounce fa-2xl';
 
   container.appendChild(dot);
-
   document.body.append(container);
 
-  setTimeout(() => {
-    container.classList.add('d-none');
-  }, 2500);
+  if (time) 
+  {
+    setTimeout(() => {
+      document.querySelector('.loading').remove();
+    }, 2500);
+  }
 
+}
+
+function unloading() 
+{
+  setTimeout(() => 
+  {
+    document.querySelector('.loading');
+  }, 1500);
 }
 
 function modals(product) {
@@ -160,6 +170,27 @@ function getLocalStorage(key)
 
 function clearLocalStorage()
 {
+  let idx = 1;
+  let i = 0;
+  
+  while (i < idx) {
+    let key = localStorage.key(0);
+
+    if (key == 'purchases' || key == null) 
+    {
+      break;
+    } 
+    else
+    {
+      localStorage.removeItem(key);
+      idx++;
+    }
+    i++;
+  }
+}
+
+function clearLocalStorageAll() 
+{
   localStorage.clear();
 }
 
@@ -167,28 +198,3 @@ const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]
 const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
 
 
-
-// BODY VENDA DE UM PRODUTO
-// {
-//   "comprador": {
-//     "tipo": "cliente",
-//     "nome": "Daniel Victor Ruan Rocha",
-//     "cpf_cnpj": "481.824.926-29",
-//     "email": "danielvictorruanrocha@arcante.com.br"
-//   },
-//   "itens": [{
-//     "produto": {
-//       "codigo_barras": "7147925826629"
-//     },
-//     "quantidade": "2",
-//     "valor_unitario": "50",
-//     "fk_tipo_preco_id": "1"
-//   }],
-//   "forma_pagamento": {
-//     "boleto": [{
-//       "valor": "100",
-//       "data_vencimento": "2023-01-01",
-//       "numero_boleto": "8800"
-//     }]
-//   } 
-// }

@@ -138,3 +138,4 @@
   </nav>
 
 <?php push('scripts', '<script src="./views/assets/js/shop.js"></script>') ?>
+<?php islogged() ?>

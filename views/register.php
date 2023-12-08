@@ -139,7 +139,7 @@
 
       </div>
 
-      <div class="mt-3 text-center">
+      <div class="my-3 text-center">
 
         <a href="/login" class="btn btn-outline-danger px-4 " type="button" >
           Já estou cadastrado

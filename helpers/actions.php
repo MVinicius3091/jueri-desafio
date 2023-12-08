@@ -54,6 +54,23 @@ function auth()
   return true;
 }
 
+function islogged()
+{
+  if (isset($_SESSION['logged'])) 
+  {
+    unset($_SESSION['logged']);
+
+    echo "<script>
+            setTimeout(()=> {
+              
+              clearLocalStorageAll();
+              $('.quantity-product').text(0);          
+
+            }, 1800);
+          </script>";
+  }
+}
+
 function request($request=null) {
 
   return (isset($_REQUEST[$request])) ? $_REQUEST[$request] : false;
