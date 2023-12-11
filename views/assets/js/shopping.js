@@ -96,7 +96,7 @@ $(function()
             text: 'Tivemos um problema ao enviar a sua compra, pedimos desculpas pelo transtorno!',
             icon: 'info',
             confirmButtonColor: '#ff0000',
-            confirmButtonText: 'Fechae',
+            confirmButtonText: 'Fechar',
           });
           
         } 

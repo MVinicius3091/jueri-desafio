@@ -50,7 +50,7 @@ class ApiController extends ToolServices
     } 
   }
 
-  public static function checkclient(string|int $client)
+  public static function checkClient(string|int $client)
   {
     $idx = 1;
     $a = 0;
@@ -148,26 +148,26 @@ class ApiController extends ToolServices
     $date = date('Y-m-d', strtotime('+3 days'));
 
     $purchase .= '],
-      "forma_pagamento": [{
-        "boleto": {
-          "valor": "'.$data['total'].'",
+      "forma_pagamento": {
+        "boleto": [{
+          "valor": "'.floatval($data['total']).'",
           "data_vencimento": "'.$date.'",
           "numero_boleto": "8880"
-        }
-      }]
+        }]
+      }
     }';
 
     $create = getApiServices('api/v1/'.env('CLIENT_PARAM').'/venda', $purchase);
 
     $response = json_decode($create, true);
 
-    if (array_key_exists('errors', $response))
+    if (array_key_exists('errors', $response) || array_key_exists('error', $response))
     {
       echo json_encode(['error' => true]);
       return false;
     }
     
-    echo json_encode(['error' => false, 'message' => $response['message']]);
+    echo json_encode(['error' => false, 'message' => 'O valor da compra deve ser de '. $response['valor_total']]);
     return true;
     
   }

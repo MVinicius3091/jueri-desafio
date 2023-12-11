@@ -11,7 +11,7 @@ $offset = (!empty(request('page')) || request('page')) ? request('page') : '1';
 
 if (route('/shop')) 
 {
-  $api = getApi('api/v1/904/produto?page='.$offset);
+  $api = getApi('api/v1/'.env('CLIENT_PARAM').'/produto?page='.$offset);
 
   foreach ($api['data'] as $apik => $apiv) {
 

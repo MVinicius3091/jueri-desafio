@@ -22,7 +22,7 @@ class LoginController extends ApiController
       ToolServices::redirect('/login');
     } 
 
-    $client = ApiController::checkclient(request('email'));
+    $client = ApiController::checkClient(request('email'));
 
     if (!$client) {
       oldServices();

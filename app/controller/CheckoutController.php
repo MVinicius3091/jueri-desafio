@@ -9,7 +9,7 @@ class CheckoutController extends ApiController
     $data = request();
     $data['client'] = ToolServices::sessionServices();
 
-    $create = ApiController::createSale($data);
+    ApiController::createSale($data);
   }
 }
 
